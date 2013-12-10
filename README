@@ -1,3 +1,64 @@
 -This is a discrete time event social Network Simulator and Analyser.
 -This project was created as part of a course project under Prof. Subodh Kumar , IIT Delhi , 2013.
--To run the "networkGen" , i.e. program to generate and simulate the network , open a terminal in the folder "networkGen" and 
+-This project has been tested and developed on linux computers .
+
+******************************************************************************************************************
+SIMULATION
+
+-To run the "networkGen" , i.e. program to generate and simulate the network ,
+	 open a terminal in the folder "networkGen" and run the following command :
+	 	"make"
+	 	"./run.sh -d (Number of Days for which the execution is to be done) (Input File name)".
+
+-A sample input file has been provided named as "SocialNetworkEnv.inp".
+-The generic Structure of the graphml file is :
+	UNIVERSITY university_name
+	DEPARTMENT dept_name num_faculty num_students_per_year semester_dept_courses
+	semeseter_nondept_courses
+	COURSE course_number dept_that_offers frequency_per_year
+	INTEREST interest_name popularity
+	HOSTEL hostel_name
+	HOUSELOCALITY locality_name
+	FRIENDSHIPRATE req_per_minute
+	OPENNESS out_probability
+	FRIENDLINESS recip_probability
+	RANDOMSEED faculty_random student_random course_random friend_random
+
+-This program produces "logFile.txt" , "graph.graphml" and "universities.txt".
+	--logFile.txt : Contains all log of all the events that took place in the simulation.
+	--graph.graphml : Contains the generated graph saved in graphml format.
+	--universities.txt : Contains the list of the Universities mentioned as input in the input file.
+
+******************************************************************************************************************
+ANALYSIS
+-To run the Analysis part, please copy the above "graph.graphml" and "universities.txt" into the folder "Analyser".
+-Open a terminal in the folder "Analyser" and execute the following commands:
+	"make"
+	"./run.sh"
+-Upon running the above commands, a perl script will start which will ask as input the name of the graphml file to
+	be analysed.Please input the name of the graphml file copied earlier.
+-Once the perl Script starts, it will take some time to preprocess the data and then it will present a UI where user can 
+	ask questions regarding the generated graph.
+-6 Questions are presently supported :
+	1. Size of Clique of a given person (identified by university name and ID)
+	2. The length of the shortest path between two given people
+	3. The list of people on the shortest path between two given people
+	4. The shortest path in the graph (between any pair of people)
+	5. The importance of the given person (the importance is the number of the all-pair shortest
+	paths that include that person)
+	6. Is any of the friends of a given person more important that him/her
+
+- To provide the university name and ID of the person, input the name of the university as in the input file [case does not matter].
+	To provide the ID , give the ID as sX or fX , where s stands for student and f stands for faculty.
+	Thus, for example to ask Q1 ask the question -"size of the clique of IITD s4" or "size of the clique of IITD f2".
+- At present user must provide a check on the ID number of the person , as at present there is no provision for checking if the ID 			number of the person is within bounds.
+-ID bounds can be checked from the input file from the line "DEPARTMENT dept_name num_faculty num_students_per_year			 				semester_dept_courses". Here this line occurs for each university's department and the number num_faculty denotes the number of      	faculty in the department and num_students_per_year denotes the number of students taken in the department per year.
+
+******************************************************************************************************************
+IMPORTANT NOTES
+
+-To read any further information please check the folder "User Manual and Reports" and find the user manual there.
+-To run the perl module perl module "termKey" needs to be installed - this has been provided in the folder - "User manuals and reports/perland doxygen modules".
+-Both networkGen and Analyser contain doxygen files built and the corresponding "refman.pdf", latex and HTML files for code documentation.
+
+-IN CASE THE USER DOES NOT EXIT THE PERL SCRIPT BY PRESSING "q" , NO CLEAN UP ACTION WILL BE TAKEN AND MESSAGE QUEUES WILL BE LEFT OVER IN THE SYSTEM. IN THAT CASE PLEASE RUN THE FOLLOWING COMMAND IN THE FOLDER - "Analyser" : "make" , "./bash_file.sh" .THIS WILL REMOVE THE MESSAGE QUEUES IN THAT CASE .
