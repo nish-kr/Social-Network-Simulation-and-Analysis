@@ -1,0 +1,338 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+
+\size giant
+Valgrind Report 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+1) Valgrind was run using the memcheck tool for both the phases :
+\end_layout
+
+\begin_layout Standard
+- networkGen 
+\end_layout
+
+\begin_layout Standard
+- Analyser
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+2) The following command was used to run the valgrind for both :
+\end_layout
+
+\begin_layout Standard
+- for first phase (NetworkGen) :valgrind --leak-check=full ./run.sh -d 200
+ sample 
+\end_layout
+
+\begin_layout Standard
+- for second phase ( Analyser ) : valgrind --leak-check=full ./run.sh
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+3) The following output was obtained :
+\end_layout
+
+\begin_layout Standard
+-for the first phase :
+\end_layout
+
+\begin_layout Standard
+==26962== Memcheck, a memory error detector 
+\end_layout
+
+\begin_layout Standard
+==26962== Copyright (C) 2002-2011, and GNU GPL'd, by Julian Seward et al.
+ 
+\end_layout
+
+\begin_layout Standard
+==26962== Using Valgrind-3.7.0 and LibVEX; rerun with -h for copyright info
+ 
+\end_layout
+
+\begin_layout Standard
+==26962== Command: ./run.sh -d 100 sample 
+\end_layout
+
+\begin_layout Standard
+==26962== 
+\end_layout
+
+\begin_layout Standard
+==26962== 
+\end_layout
+
+\begin_layout Standard
+==26962== HEAP SUMMARY: 
+\end_layout
+
+\begin_layout Standard
+==26962== in use at exit: 1,640 bytes in 45 blocks 
+\end_layout
+
+\begin_layout Standard
+==26962== total heap usage: 46 allocs, 1 frees, 1,656 bytes allocated 
+\end_layout
+
+\begin_layout Standard
+==26962== 
+\end_layout
+
+\begin_layout Standard
+==26962== LEAK SUMMARY: 
+\end_layout
+
+\begin_layout Standard
+==26962== definitely lost: 0 bytes in 0 blocks 
+\end_layout
+
+\begin_layout Standard
+==26962== indirectly lost: 0 bytes in 0 blocks 
+\end_layout
+
+\begin_layout Standard
+==26962== possibly lost: 0 bytes in 0 blocks 
+\end_layout
+
+\begin_layout Standard
+==26962== still reachable: 1,640 bytes in 45 blocks 
+\end_layout
+
+\begin_layout Standard
+==26962== suppressed: 0 bytes in 0 blocks 
+\end_layout
+
+\begin_layout Standard
+==26962== Reachable blocks (those to which a pointer was found) are not
+ shown.
+ 
+\end_layout
+
+\begin_layout Standard
+==26962== To see them, rerun with: --leak-check=full --show-reachable=yes
+ 
+\end_layout
+
+\begin_layout Standard
+==26962== ==26962== For counts of detected and suppressed errors, rerun
+ with: -v 
+\end_layout
+
+\begin_layout Standard
+==26962== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 2 from 2)
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+-for second phase :
+\end_layout
+
+\begin_layout Standard
+==27008== Memcheck, a memory error detector 
+\end_layout
+
+\begin_layout Standard
+==27008== Copyright (C) 2002-2011, and GNU GPL'd, by Julian Seward et al.
+ 
+\end_layout
+
+\begin_layout Standard
+==27008== Using Valgrind-3.7.0 and LibVEX; rerun with -h for copyright info
+ 
+\end_layout
+
+\begin_layout Standard
+==27008== Command: ./run.sh 
+\end_layout
+
+\begin_layout Standard
+==27008== Please enter the name of the file graph.graphml Calculating........
+ Please don't press anything ...
+ Anyway I won't consider anything you type.
+ ;-) Just so you know anything
+\begin_inset VSpace medskip
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+ you type will not be printed on the screen Enter the query...
+ Or q to quit q 
+\end_layout
+
+\begin_layout Standard
+==27008== 
+\end_layout
+
+\begin_layout Standard
+==27008== HEAP SUMMARY: 
+\end_layout
+
+\begin_layout Standard
+==27008== in use at exit: 1,696 bytes in 47 blocks 
+\end_layout
+
+\begin_layout Standard
+==27008== total heap usage: 48 allocs, 1 frees, 1,712 bytes allocated 
+\end_layout
+
+\begin_layout Standard
+==27008== 
+\end_layout
+
+\begin_layout Standard
+==27008== LEAK SUMMARY: 
+\end_layout
+
+\begin_layout Standard
+==27008== definitely lost: 0 bytes in 0 blocks 
+\end_layout
+
+\begin_layout Standard
+==27008== indirectly lost: 0 bytes in 0 blocks 
+\end_layout
+
+\begin_layout Standard
+==27008== possibly lost: 0 bytes in 0 blocks 
+\end_layout
+
+\begin_layout Standard
+==27008== still reachable: 1,696 bytes in 47 blocks 
+\end_layout
+
+\begin_layout Standard
+==27008== suppressed: 0 bytes in 0 blocks 
+\end_layout
+
+\begin_layout Standard
+==27008== Rerun with --leak-check=full to see details of leaked memory 
+\end_layout
+
+\begin_layout Standard
+==27008== 
+\end_layout
+
+\begin_layout Standard
+==27008== For counts of detected and suppressed errors, rerun with: -v 
+\end_layout
+
+\begin_layout Standard
+==27008== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 2 from 2)
+ 
+\end_layout
+
+\begin_layout Standard
+4) Thus as can be seen from the output of the valgrind , there is no memory
+ leak .
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size largest
+Team
+\end_layout
+
+\begin_layout Standard
+-Nishant Kumar , 2012CS10239
+\end_layout
+
+\begin_layout Standard
+-V.A.V.S.
+ Nikhil , 2012CS10260
+\end_layout
+
+\begin_layout Standard
+-Mohit Agarwal , 2012CS10234
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_body
+\end_document

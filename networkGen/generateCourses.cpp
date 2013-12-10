@@ -1,0 +1,282 @@
+/*
+ * generateCourses.cpp
+ *
+ *  Created on: Oct 12, 2013
+ *      Author: cs1120239
+ */
+
+#include <vector>
+#include <math.h>
+#include <random>
+#include <pthread.h>
+#include <fstream>
+#include <errno.h>
+#include "generateCourses.h"
+#include "generator.h"
+#include "Network.h"
+using namespace std;
+
+extern long mtime;
+extern long timelimit;
+extern pthread_cond_t cond[4];
+extern pthread_cond_t condBack[4];
+extern pthread_mutex_t Nlock;
+extern pthread_mutex_t cond_mutex[4];
+extern pthread_mutex_t logLock;
+extern pthread_mutex_t wLock;
+extern pthread_mutex_t tLock;
+extern bool isWaiting[4];
+extern bool isWorking[4];
+extern bool isMainWaiting[4];
+
+extern ofstream logStream;
+extern Network N;
+static long nextTimeToRun = 0;
+
+default_random_engine rand_en_course;										//a random engine whose seed will be the random course seed and
+																			//and which will be used for all the random values required
+
+bool isThisTheFirstTimeCourse = true;										//bool to know whether this is the first time the courses are being
+																			//assigned or is this another sem .. if another sem then we need to
+																			//clear all alloted courses first
+
+//initialize the random engine
+void initRandomCourse(){
+	rand_en_course.seed(N.randomSeedCourse);
+}
+
+static void printMutexLockError(){
+	cerr<<"Error in Mutex locking - generateCourses."<<endl;
+	switch(errno){
+		case E2BIG :{cerr<<"EINVAL"<<endl;break;}
+		case EACCES :{cerr<<"EBUSY"<<endl;break;}
+		case EAGAIN :{cerr<<"EAGAIN"<<endl;break;}
+		case EFAULT :{cerr<<"EDEADLK"<<endl;break;}
+		case EIDRM :{cerr<<"EPERM"<<endl;break;}
+	}
+}
+
+
+//clean and remove all previous alloted courses
+void initCleanCourse(){
+	for(int i = 0; i< N.universities.size();i++){
+		University* curUniv = N.universities[i];
+		for(int j = 0 ;j < curUniv->departments.size() ; j++){
+			Department* curDep = curUniv->departments[j];
+			for(int k = 0;k < curDep->courseFloated.size();k++){
+				Course* curCourse = curDep->courseFloated[k];
+				
+				pthread_mutex_lock(&Nlock);
+				curCourse->isFloated = false;
+				curCourse->students.clear();
+				curCourse->takenByFac->isTeaching = false;
+				pthread_mutex_unlock(&Nlock);
+			}
+			pthread_mutex_lock(&Nlock);
+			curDep->courseFloated.clear();
+			pthread_mutex_unlock(&Nlock);
+		}
+		for(int l = 0; l< curUniv->students.size(); l++ ){
+			pthread_mutex_lock(&Nlock);
+			curUniv->students[l]->coursesTaken.clear();
+			pthread_mutex_unlock(&Nlock);
+		}
+		pthread_mutex_lock(&Nlock);
+		curUniv->floatedCourses.clear();
+		pthread_mutex_unlock(&Nlock);
+	}
+}
+
+
+//the required function to allot all required courses
+void* initGenerateCourse(void* arg){
+	pthread_mutex_lock(&cond_mutex[2]);
+	isWaiting[2] = false;
+	initRandomCourse();
+	uniform_int_distribution<int> select_prob(1,100);									//a distribution object to randomly 
+																						//select values between 1 and 100
+	goto waiting ;
+genCourse:
+	if (pthread_mutex_lock(&wLock)!=0) {printMutexLockError();exit(1);}
+	isWorking[2] = true;
+	if (pthread_mutex_unlock(&wLock)!=0) {printMutexLockError();exit(1);}
+
+	//assuming mutex is not required while reading 
+	//set the time
+	if (pthread_mutex_lock(&tLock)!=0) {printMutexLockError();exit(1);}
+	if (mtime > nextTimeToRun) {cerr<<"error in time .";exit(1);}
+	if (mtime != nextTimeToRun) mtime = nextTimeToRun;
+	if (pthread_mutex_unlock(&tLock)!=0) {printMutexLockError();exit(1);}
+	int rand_n;
+	initCleanCourse();	
+	//iterating over all universities
+	for(int i= 0;i < N.universities.size();i++){											//to iterate on universities
+		University* curUniv = N.universities[i];
+		
+		//iterating over all departments of that university
+		for(int j = 0 ;j < curUniv->departments.size() ; j++){
+			Department* curDep = curUniv->departments[j];
+			if (curDep->allCourses.size() == 0) continue;
+
+			//iterating aover all courses by that department and deciding if that course is to be floated
+
+			for(int k = 0;k < curDep->allCourses.size();k++){							//to iterate on all the courses and select randomly
+				Course* curCourse = curDep->allCourses[k];
+				rand_n = select_prob(rand_en_course);
+				int curCourseProb = (int) ((curCourse->freq/2)*100);					//checks the probability of the course
+
+																						//if the random no. generated is more than the current
+																						//course probability then this course will not be floated
+																						//so leave this course and move onto the next course
+				if(rand_n > curCourseProb){												//randomly checks whether or not to float the course
+					continue;
+				}
+				pthread_mutex_lock(&Nlock);
+				curCourse->isFloated = true;
+				curDep->courseFloated.push_back(curCourse);								//pushes the cur course since it is being floated
+																						//to course floated vector
+				curUniv->floatedCourses.push_back(curCourse);
+				pthread_mutex_unlock(&Nlock);
+				//add to the log file
+				pthread_mutex_lock(&logLock);
+				logStream<<"Course "<<curCourse->name<<" floated in "<<curDep->name<<" department of "<<curUniv->name<<" university .\n";
+				pthread_mutex_unlock(&logLock);
+			}
+
+			//assigning faculties to floated courses
+			uniform_int_distribution<int> fac_select(0,curDep->numOfFaculty-1);
+			int fac_arr_index = fac_select(rand_en_course);								//selects the starting faculty vector index
+			int totalCoursesFloated =curDep->courseFloated.size();
+			for(int l = 0; l <totalCoursesFloated ;l++){								//it assigns the faculty to every course floated
+				Course* curCourse = curDep->courseFloated[l];
+				if(fac_arr_index == curDep->numOfFaculty ){
+					fac_arr_index = 0;
+				}
+				Faculty* curFac =  curDep->faculties[fac_arr_index];
+				
+				//lock the network while editing
+				pthread_mutex_lock(&Nlock);
+				curCourse->takenByFac = curFac;
+				curFac->coursesTaught = curCourse;
+				curFac->isTeaching = true;
+				pthread_mutex_unlock(&Nlock);
+				fac_arr_index++;
+
+				pthread_mutex_lock(&logLock);
+				logStream<<"Faculty "<<curFac->name<<" assigned to Course "<<curCourse->name<<" floated in "<<
+						curDep->name<<" department of "<<curUniv->name<<" university .\n";
+				pthread_mutex_unlock(&logLock);
+			}
+
+			//now the courses are to be assigned to students .. so if generateStudents  is running .. this should not be done 
+			//so wait for generateStudent to finish
+
+			while (isMainWaiting[1]) {
+			}
+
+			//assigning dept courses to students
+			int sureDCorPS = floor(curDep->semDepCourses);								//total dep course that are sure to be selected for this student
+			float probDCorPS =  (curDep->semDepCourses) - sureDCorPS;					//the probability of exrtra dep course
+			uniform_int_distribution<int> dCourseSelect(0, totalCoursesFloated - 1);	//pool for selecting course for the student
+			for(int m = 0 ; m <  curDep->students.size();m++){
+				Student* curStud = curDep->students[m];
+				int myDepCourse =  sureDCorPS;
+				if( ((int) ( probDCorPS *100)) > select_prob(rand_en_course) ){
+							myDepCourse = sureDCorPS +1;
+				}
+				else{
+					myDepCourse = sureDCorPS;
+				}
+				for(int n = 0 ; n < myDepCourse ;n++){
+
+					int ind = dCourseSelect(rand_en_course);
+					Course* curCourse = curDep->courseFloated[ind];
+					int course_strength = curCourse->students.size();
+					if( course_strength!= 0){
+						if(curStud->entryNumber == curCourse->students[course_strength-1]->entryNumber){
+							n--;
+							continue;
+						}
+					}
+					pthread_mutex_lock(&Nlock);
+					curCourse->students.push_back(curStud);
+					curStud->coursesTaken.push_back(curCourse);
+					pthread_mutex_unlock(&Nlock);
+				}
+				pthread_mutex_lock(&logLock);
+				logStream<<"Student "<<curStud->name <<" of department "<< curDep->name<<
+						" and of university "<<curUniv->name <<" assigned department courses .\n";
+				pthread_mutex_unlock(&logLock) ;
+			}
+		}//traversal over all depts completed .. so now safely non dept courses can be assigned to students
+
+		//now all the departments have floated courses and now the non dept courses can be assigned
+		uniform_int_distribution<int> ndCourseSelect(0,curUniv->floatedCourses.size()-1);
+		int sureNDCorPS ;
+		float probNDCorPS;
+
+		for(int o = 0; o< curUniv->students.size();o++){
+			Student* curStud = curUniv->students[o];
+			sureNDCorPS = floor(curStud->dep->nonsemDepCourses);							// total nondep course that are sure to be selected
+																							//for this student
+
+			probNDCorPS =  (curStud->dep->nonsemDepCourses) - ((float) sureNDCorPS);		//probability of another non department courses
+
+			int myNDepCourse =  sureNDCorPS;
+			if( ((int) ( probNDCorPS *100)) > select_prob(rand_en_course) ){
+				myNDepCourse = sureNDCorPS +1;
+			}
+			for(int p = 0 ; p < myNDepCourse ;p++){											//non departmental course courses generation
+				int ind = ndCourseSelect(rand_en_course);
+				Course* curCourse = curUniv->floatedCourses[ind];
+				int course_strength = curCourse->students.size();
+				if(curCourse->dep == curStud->dep) {
+					p--; continue;
+				}
+				if( course_strength!= 0){
+					if(curStud->entryNumber == curCourse->students[course_strength-1]->entryNumber){
+						p--;
+						continue;
+					}
+				}
+
+				pthread_mutex_lock(&Nlock);
+				curCourse->students.push_back(curStud);
+				curStud->coursesTaken.push_back(curCourse);
+				pthread_mutex_unlock(&Nlock);
+
+				pthread_mutex_lock(&logLock);
+				logStream<<"Student "<<curStud->name <<" of university "<<curUniv->name <<" assigned non - department courses .\n";
+				pthread_mutex_unlock(&logLock);
+			}
+		}//non - dept courses alloted
+	}//university iteration
+	
+	//send message to TK 
+	//assuming all months to be 30 days
+	nextTimeToRun = mtime + 6*30*24*60;
+	sndmsgToTK(nextTimeToRun , 2);
+	
+	if (pthread_mutex_lock(&wLock) != 0) {printMutexLockError();exit(1);}
+	isWorking[2] = false;
+	if (pthread_mutex_unlock(&wLock)!=0) {printMutexLockError();exit(1);}
+
+		//all work of this thread has been done .. let the main of generator proceed .. 
+	if (pthread_mutex_lock(&cond_mutex[2])!=0) {printMutexLockError();exit(1);}
+	isMainWaiting[2] = false;
+	pthread_cond_signal(&condBack[2]);
+waiting:
+	if (pthread_mutex_trylock(&cond_mutex[2]) != 0){
+		//lock busy..
+	}
+	else{
+		//lock acquired
+	}
+	isWaiting[2] = true;
+	while(isWaiting[2]){
+		pthread_cond_wait(&cond[2] , &cond_mutex[2]);
+	}
+	if (pthread_mutex_unlock(&cond_mutex[2])!=0) {printMutexLockError();exit(1);}
+	goto genCourse;
+	return NULL;
+}

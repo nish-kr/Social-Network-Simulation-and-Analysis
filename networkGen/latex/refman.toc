@@ -1,0 +1,18 @@
+\contentsline {chapter}{\numberline {1}\discretionary {-}{}{}Class \discretionary {-}{}{}Index}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}\discretionary {-}{}{}Class \discretionary {-}{}{}List}{1}{section.1.1}
+\contentsline {chapter}{\numberline {2}\discretionary {-}{}{}Class \discretionary {-}{}{}Documentation}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}\discretionary {-}{}{}Compare\discretionary {-}{}{}Tuple \discretionary {-}{}{}Class \discretionary {-}{}{}Reference}{3}{section.2.1}
+\contentsline {section}{\numberline {2.2}\discretionary {-}{}{}Course \discretionary {-}{}{}Class \discretionary {-}{}{}Reference}{3}{section.2.2}
+\contentsline {section}{\numberline {2.3}\discretionary {-}{}{}Department \discretionary {-}{}{}Class \discretionary {-}{}{}Reference}{4}{section.2.3}
+\contentsline {section}{\numberline {2.4}\discretionary {-}{}{}Faculty \discretionary {-}{}{}Class \discretionary {-}{}{}Reference}{4}{section.2.4}
+\contentsline {section}{\numberline {2.5}\discretionary {-}{}{}Hostel \discretionary {-}{}{}Class \discretionary {-}{}{}Reference}{5}{section.2.5}
+\contentsline {section}{\numberline {2.6}\discretionary {-}{}{}House \discretionary {-}{}{}Class \discretionary {-}{}{}Reference}{5}{section.2.6}
+\contentsline {section}{\numberline {2.7}\discretionary {-}{}{}Houselocality \discretionary {-}{}{}Class \discretionary {-}{}{}Reference}{5}{section.2.7}
+\contentsline {section}{\numberline {2.8}\discretionary {-}{}{}Interest \discretionary {-}{}{}Class \discretionary {-}{}{}Reference}{6}{section.2.8}
+\contentsline {section}{\numberline {2.9}mymsg\discretionary {-}{}{}To\discretionary {-}{}{}Generator \discretionary {-}{}{}Struct \discretionary {-}{}{}Reference}{6}{section.2.9}
+\contentsline {section}{\numberline {2.10}mymsg\discretionary {-}{}{}To\discretionary {-}{}{}Time\discretionary {-}{}{}Keeper \discretionary {-}{}{}Struct \discretionary {-}{}{}Reference}{7}{section.2.10}
+\contentsline {section}{\numberline {2.11}my\discretionary {-}{}{}Tuple \discretionary {-}{}{}Class \discretionary {-}{}{}Reference}{7}{section.2.11}
+\contentsline {section}{\numberline {2.12}\discretionary {-}{}{}Network \discretionary {-}{}{}Class \discretionary {-}{}{}Reference}{7}{section.2.12}
+\contentsline {section}{\numberline {2.13}\discretionary {-}{}{}Room \discretionary {-}{}{}Class \discretionary {-}{}{}Reference}{8}{section.2.13}
+\contentsline {section}{\numberline {2.14}\discretionary {-}{}{}Student \discretionary {-}{}{}Class \discretionary {-}{}{}Reference}{8}{section.2.14}
+\contentsline {section}{\numberline {2.15}\discretionary {-}{}{}University \discretionary {-}{}{}Class \discretionary {-}{}{}Reference}{8}{section.2.15}

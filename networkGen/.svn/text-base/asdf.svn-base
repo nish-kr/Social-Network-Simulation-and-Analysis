@@ -1,0 +1,403 @@
+main started
+send TK called by 1 to wake at 0
+send TK called by 2 to wake at 0
+send TK called by 3 to wake at 0
+0wktmby1
+added in todolist:0by1
+0wktmby2
+added in todolist:0by2
+0wktmby3
+added in todolist:0by3
+0wktmby10
+		message received by generator at time 0
+broadcasting to 1
+broadcasting to 2
+broadcasting to 3
+broadcasting done by generatorr
+courses thread unlocked : starting my function
+course thread waiting for student thread to complete ..
+send TK called by 3 to wake at 1440
+student threadded in todolist:1440by3
+send TK called by 1 to wake at 518400
+student work dadded in todolist:518400by1
+.
+course thread done waitign for student ..
+course thread waiting for student thread to complete ..
+course thread done waitign for student ..
+course thread waiting for student thread to complete ..
+course thread done waitign for student ..
+send TK called by 2 to wake at 259200
+courses work dadded in todolist:259200by2
+.
+  main of generatoe has stopped waiting .. proceeding to next iteration .. 
+0wktmby10
+		message received by generator at time 0
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 2880
+  main of generatoe has stopped waiting .. proceeding to next iteration .. 
+0wktmby10
+		message received by generator at time 1440
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 4320
+  main of generatoe has stopped waiting .. proceeding to next iteration .. 
+0wktmby10
+		message received by generator at time 2880
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 5760
+  main of generatoe has stopped waiting .. proceeding to next iteration .. 
+0wktmby10
+		message received by generator at time 4320
+broadcasting to 3
+send TK called by 3 to wake at 7200
+broadcasting done by generatorr
+  main of generatoe has stopped waiting .. proceeding to next iteration .. 
+0wktmby10
+		message received by generator at time 5760
+broadcasting to 3
+broadcasting done by generatorr
+49 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<
+send TK called by 3 to wake at 8640
+  main of generatoe has stopped waiting .. proceeding to next iteration .. 
+0wktmby10
+		message received by generator at time 7200
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 10080
+  main of generatoe has stopped waiting .. proceeding to next iteration .. 
+0wktmby10
+		message received by generator at time 8640
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 11520
+  main of generatoe has stopped waiting .. proceeding to next iteration .. 
+0wktmby10
+		message received by generator at time 10080
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 12960
+  main of generatoe has stopped waiting .. proceeding to next iteration .. 
+0wktmby10
+		message received by generator at time 11520
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 14400
+  main of genadded in todolist:14400by3
+0wktmby10
+		message received by generator at time 12960
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 15840
+  main of generatoe has stopped waiting .. proceeding to next iteration .. 
+0wktmby10
+		message received by generator at time 14400
+broadcasting to 3
+broadcasting done by generatorr
+25 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<
+47 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<
+send TK called by 3 to wake at 17280
+  main of generatoe has stopped waiting .. proceeding to next iteration .. 
+0wktmby10
+		message received by generator at time 15840
+broadcasting to 3
+broadcasting done by generatorr
+10 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<
+send TK called by 3 to wake at 18720
+  main of genadded in todolist:18720by3
+0wktmby10
+		message received by generator at time 17280
+broadcasting to 3
+send TK called by 3 to wake at 20160
+broadcasting added in todolist:2  main of generatoe has stopped waiting .. proceeding to next iteration .. 
+0wktmby10
+		message received by generator at time 18720
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 21600
+  main of genadded in todolist:21600by3
+0wktmby10
+		message received by generator at time 20160
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 23040
+  main of genadded in todolist:23040by3
+0wktmby10
+		message received by generator at time 21600
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 24480
+  main of genadded in todolist:24480by3
+0wktmby10
+		message received by generator at time 23040
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 25920
+  main of genadded in todolist:25920by3
+0wktmby10
+		message received by generator at time 24480
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 27360
+  main of genadded in todolist:27360by3
+0wktmby10
+		message received by generator at time 25920
+broadcasting to 3
+broadcasting done by generatorr
+7 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<
+send TK called by 3 to wake at 28800
+  main of genadded in todolist:28800by3
+0wktmby10
+		message received by generator at time 27360
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 30240
+  main of genadded in todolist:30240by3
+0wktmby10
+		message received by generator at time 28800
+broadcasting to 3
+broadcasting done by generatorr
+7 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<
+send TK called by 3 to wake at 31680
+  main of genadded in todolist:31680by3
+0wktmby10
+		message received by generator at time 30240
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 33120
+  main of genadded in todolist:33120by3
+0wktmby10
+		message received by generator at time 31680
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 34560
+34560wktmby3
+added in todolist:34560by3
+  main of generatoe has stopped waiting .. proceeding to next iteration .. 
+0wktmby10
+		message received by generator at time 33120
+broadcasting to 3
+broadcasting done by generatorr
+58 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<
+send TK called by 3 to wake at 36000
+  main of genadded in todolist:36000by3
+0wktmby10
+		message received by generator at time 34560
+broadcasting to 3
+broadcasting done by generatorr
+30 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<
+send TK called by 3 to wake at 37440
+  main of genadded in todolist:37440by3
+0wktmby10
+		message received by generator at time 36000
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 38880
+  main of genadded in todolist:38880by3
+0wktmby10
+		message received by generator at time 37440
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 40320
+  main of genadded in todolist:40320by3
+0wktmby10
+		message received by generator at time 38880
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 41760
+  main of genadded in todolist:41760by3
+0wktmby10
+		message received by generator at time 40320
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 43200
+  main of genadded in todolist:43200by3
+0wktmby10
+		message received by generator at time 41760
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 44640
+  main of genadded in todolist:44640by3
+0wktmby10
+		message received by generator at time 43200
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 46080
+  main of genadded in todolist:46080by3
+0wktmby10
+		message received by generator at time 44640
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 47520
+  main of genadded in todolist:47520by3
+0wktmby10
+		message received by generator at time 46080
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 48960
+  main of genadded in todolist:48960by3
+0wktmby10
+		message received by generator at time 47520
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 50400
+  main of genadded in todolist:50400by3
+0wktmby10
+		message received by generator at time 48960
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 51840
+  main of genadded in todolist:51840by3
+0wktmby10
+		message received by generator at time 50400
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 53280
+  main of genadded in todolist:53280by3
+0wktmby10
+		message received by generator at time 51840
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 54720
+  main of genadded in todolist:54720by3
+0wktmby10
+		message received by generator at time 53280
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 56160
+  main of genadded in todolist:56160by3
+0wktmby10
+		message received by generator at time 54720
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 57600
+  main of genadded in todolist:57600by3
+0wktmby10
+		message received by generator at time 56160
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 59040
+  main of genadded in todolist:59040by3
+0wktmby10
+		message received by generator at time 57600
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 60480
+  main of genadded in todolist:60480by3
+0wktmby10
+		message received by generator at time 59040
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 61920
+  main of genadded in todolist:61920by3
+0wktmby10
+		message received by generator at time 60480
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 63360
+  main of genadded in todolist:63360by3
+0wktmby10
+		message received by generator at time 61920
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 64800
+  main of genadded in todolist:64800by3
+0wktmby10
+		message received by generator at time 63360
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 66240
+  main of genadded in todolist:66240by3
+0wktmby10
+		message received by generator at time 64800
+broadcasting to 3
+send TK called by 3 to wake at 67680
+broadcasting added in todolist:6  main of generatoe has stopped waiting .. proceeding to next iteration .. 
+0wktmby10
+		message received by generator at time 66240
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 69120
+  main of genadded in todolist:69120by3
+0wktmby10
+		message received by generator at time 67680
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 70560
+  main of genadded in todolist:70560by3
+0wktmby10
+		message received by generator at time 69120
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 72000
+  main of genadded in todolist:72000by3
+0wktmby10
+		message received by generator at time 70560
+broadcasting to 3
+broadcasting done by generatorr
+send TK called by 3 to wake at 73440
+  main of genadded in todolist:73440by3
+0wktmby10
+1289    987654321
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

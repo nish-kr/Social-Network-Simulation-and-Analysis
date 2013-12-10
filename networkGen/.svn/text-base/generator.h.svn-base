@@ -1,0 +1,29 @@
+/*
+ * generate.h
+ *
+ *  Created on: Oct 14, 2013
+ *      Author: cs1120239
+ */
+
+#ifndef GENERATE_H_
+#define GENERATE_H_
+
+#include <pthread.h>
+
+struct mymsgToTimeKeeper{
+	long mtype;
+	long timeToWake;
+	int reqBy;
+};
+
+struct mymsgToGenerator{
+	long mtype;
+	bool toWake[4];
+};
+
+void errnoMsgsnd();
+void errnoMsgrcv();
+void errnoMsgget();
+void sndmsgToTK(long twake, int by);
+
+#endif /* GENERATE_H_ */

@@ -1,0 +1,3 @@
+-This is a discrete time event social Network Simulator and Analyser.
+-This project was created as part of a course project under Prof. Subodh Kumar , IIT Delhi , 2013.
+-To run the "networkGen" , i.e. program to generate and simulate the network , open a terminal in the folder "networkGen" and 

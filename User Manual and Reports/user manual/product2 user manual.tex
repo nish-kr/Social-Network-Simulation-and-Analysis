@@ -1,0 +1,59 @@
+\documentclass[a4paper,14pt]{article}
+\usepackage{graphicx}
+\begin{document}
+\begin{center}
+\Huge\textbf{User Manual}
+\\[0.2in]
+\huge\textbf{NETWORK SIMULATION and GRAPH ANALYSIS}
+\\[0.2in]
+\large\textbf{BY}
+\\[0.2in]
+\Large\textbf{Nishant Kumar}
+\\
+\Large\textbf{V.A.V.S. Nikhil}
+\\
+\Large\textbf{Mohit Agarwal}
+\\[10in]
+\huge\textbf{CONTENTS}
+\\[0.4in]
+\end{center}
+\begin{flushleft}
+A. \large\textbf{Instructions for executing}\\
+\begin{enumerate}
+\item There are two folders 1)NetworkGen 2)Analyser
+\item To run the first part i.e. NetworkGen
+\begin{enumerate}
+\item Open terminal.
+\item cd to NetworkGen
+\item Type "make" and wait for code to compile.
+\item Type "./run.sh -d (day) (inp)", where day-> No. of days for which you want to run the simulation and inp-> name of input file to clean.
+\item Type "make clean". 
+\end{enumerate}
+\item To run the first part i.e. NetworkGen
+\begin{enumerate}
+\item Open terminal.
+\item cd to Abnalyser
+\item Type "make" and wait for code to compile.
+\item Type "./run.sh "
+\item Type Press 'q' for exit.
+\item Type "make clean". 
+\end{enumerate}
+\item If in the second part user exits without pressing q, message ques won't be deleted and type "./bash\_file.sh" 
+\end{enumerate}
+B.	 \large\textbf{System Requirements}\\
+ Since message queues used by us only work on a unix system. Hence our system requirement is unix/linux for sure.
+\\[0.1in]C.\large\textbf{Queries supported}\\
+\begin{enumerate}
+\item The clique of a node.
+\item The length of shortest path between two nodes.
+\item List of people on the shortest path of two nodes.
+\item Largest short path in the graph.
+\item Importance of the given node.
+\item For checking if there is more important friend of a node than itself.
+\end{enumerate}
+D.\large\textbf{Format of entering the nodes}\\
+First specify the university as it was given in the graph and then specify the type and number.
+i.e. To specify a person with node id IITD\_f\_180 You have to do IITD f180.
+
+\end{flushleft}
+\end{document}

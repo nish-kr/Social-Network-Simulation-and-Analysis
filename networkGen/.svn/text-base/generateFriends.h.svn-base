@@ -1,0 +1,16 @@
+/*
+ * generateFriends.h
+ *
+ *  Created on: Oct 12, 2013
+ *      Author: cs1120239
+ */
+
+#ifndef GENERATEFRIENDS_H_
+#define GENERATEFRIENDS_H_
+
+bool isHappen(float p);
+void initRandomFriends();
+void doFriendRequest();
+void* initGenerateFriends(void*);
+
+#endif /* GENERATEFRIENDS_H_ */

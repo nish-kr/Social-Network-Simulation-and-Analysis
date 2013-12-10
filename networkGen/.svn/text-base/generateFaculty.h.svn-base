@@ -1,0 +1,14 @@
+/*
+ * generateFaculty.h
+ *
+ *  Created on: Oct 11, 2013
+ *      Author: cs1120239
+ */
+
+#ifndef GENERATEFACULTY_H_
+#define GENERATEFACULTY_H_
+
+void initRandomFac();								//initiate the random class with the seed
+void* initGenerateFaculty(void*);						//initiate the faculty generation process
+
+#endif /* GENERATEFACULTY_H_ */
